@@ -1,0 +1,29 @@
+{
+ "name": "kulasis_auto_login",
+ "version": "0.0.1",
+ "manifest_version": 2,
+ "description": "KULASISやPandaに自動ログインします",
+ "permissions": [
+ "<all_urls>"
+ ],
+"content_scripts": [
+  {
+  	"matches": ["https://authidp1.iimc.kyoto-u.ac.jp/idp/profile/SAML2/Redirect/SSO/*"],
+    "js": ["kulasis_login.js"]
+  },
+  {
+    "matches": ["https://panda.ecs.kyoto-u.ac.jp/portal/*"],
+    "js": ["panda_press_login.js"]
+  },
+  {
+    "matches": ["https://cas.ecs.kyoto-u.ac.jp/cas/login?service=https%3A%2F%2Fpanda.ecs.kyoto-u.ac.jp%2Fsakai-login-tool%2Fcontainer"],
+    "js": ["panda_login.js"]
+  }
+],
+ "background":{
+ "scripts":  ["background.js"]
+ },
+ "icons" : {
+ "128": "icon.png"
+ }
+}
